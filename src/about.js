@@ -1,6 +1,6 @@
 // Interesting. I'm assuming that node is compiling the SASS.
 // But getting it to cooperate with other packages installed is tricky.
-// So I'm using some external libraries, and initialize through those.
+// So I'm using some external libraries and manual inclusions.
 
 import './scss/about.scss';
 
@@ -35,9 +35,6 @@ import './images/icons/popori-icon.png';
 // import './vid/action_thumb.mp4';
 // import './vid/action_thumb.webm';
 
-/** I don't understand why my regular JS/jQuery doesn't just work here **/
-// require("./lucioware.js");
-
 function changeRaceSlide(){
     var raceIcons = $('ul.slider-buttons li');
     
@@ -62,7 +59,56 @@ function clearAllSlides(){
     var raceSlides = $('.slider-content .slide').removeClass('active');
 }
 
+(function ( $ ) {
+	"use strict";
+    
+	$.fn.konami = function( options ) {
+		var opts, controllerCode;
+		opts = $.extend({}, $.fn.konami.defaults, options);
+		controllerCode = [];
+        
+		// Note that we use the passed-in options, not the resolved options.
+		opts.eventProperties = $.extend({}, options,  opts.eventProperties);
+		this.keyup(function( evt ) {
+			var code = evt.keyCode || evt.which;
+			if ( opts.code.length > controllerCode.push( code ) ) {
+				return;
+			}
+			if ( opts.code.length < controllerCode.length ) {
+				controllerCode.shift();
+			}
+			if ( opts.code.toString() !== controllerCode.toString() ) {
+				return;
+			}
+			opts.cheat(evt, opts);
+		});
+		return this;
+	};
+    
+	$.fn.konami.defaults = {
+		code : [38,38,40,40,37,39,37,39,66,65],
+		eventName : 'konami',
+		eventProperties : null,
+		cheat: function(evt, opts) {
+			$(evt.target).trigger(opts.eventName, [ opts.eventProperties ]);
+		}
+	};
+    
+})( jQuery );
+
+function activateCheat(){
+    alert( 'Cheat code activated!' );
+    // DO SOMETHING HERE!
+}
+
 $( document ).ready( function(){
-    console.log("Lucioware Active");
+    
     changeRaceSlide();
+    
+    $( window ).konami({
+  		code : [38,38,40,40,37,39,37,39,66,65], // up up down down left right left right
+		cheat: function() {
+            activateCheat();
+		}
+	});
 });

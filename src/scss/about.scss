@@ -98,7 +98,7 @@ body {
                 
                 position: absolute;
                 top: 0px;
-                right: 0px;
+                right: 15px;
                 height: auto;
                 padding: 5px 30px;
                 border-radius: 9px;
@@ -179,6 +179,7 @@ body {
             position: relative;
             text-align: left;
             margin-bottom: 100px;
+            z-index: 50;
             
             span.shadow {
                 @include textshadow(#000000);
@@ -228,7 +229,7 @@ body {
             li {
                 @include getfont(eme-races-icon);
                 display: inline-block;
-                margin: 3px 10px;
+                margin: 10px;
                 cursor: pointer;
                 
                 .icon-wrapper {
@@ -289,6 +290,5 @@ footer {
 
 /***** RESPONSIVE *****/
 @media (max-width: 900px) {
-
-    // DO I NEED THIS YET!? Maybe...
+    // Don't really need this for now. But it could be cool later...
 }
