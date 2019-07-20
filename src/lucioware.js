@@ -4,20 +4,25 @@
     time to learn all of Node during a testing exercise.)
 *****/
 
-    // Just For Fun
-    // $(window).jKonamicode(function(){
-    //     alert("No Cheating!");
-    // });
-
-
-var callCount = 1;
-
-function luciowareLoaded(){
-    console.log("Lucioware Loaded. Count: " + callCount);
-    callCount++;
-    return;
+function testTrigger(){
+    var raceIcons = $('ul.slider-buttons li');
+    raceIcons.each( function(){
+        $(this).on('click', function(){
+            console.log("Click!");
+        });
+    });
 }
 
-$( document ).ready( function(){
-    console.log("Lucioware Active");
-});
+function changeRaceSlide(){
+    var raceIcons = $('ul.slider-buttons li');
+    
+    raceIcons.each( function(){
+        var self = $(this);
+        var slideName = self.find('img').attr('for');
+        var thisSlide = $('slider-content .slide[name=' + slideName + ']');
+        if( !( thisSlide.hasClass('active') ) && !( self.hasClass('active') ) ){
+            thisSlide.addClass('active');
+            self.addClass('active');
+        }
+    });
+}

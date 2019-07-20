@@ -35,30 +35,34 @@ import './images/icons/popori-icon.png';
 // import './vid/action_thumb.mp4';
 // import './vid/action_thumb.webm';
 
-
-
-
-
 /** I don't understand why my regular JS/jQuery doesn't just work here **/
-// import './resources/lucioware.js';
+// require("./lucioware.js");
 
-require("./lucioware.js");
+function changeRaceSlide(){
+    var raceIcons = $('ul.slider-buttons li');
+    
+    raceIcons.each( function(){
+        var thisIcon = $(this);
+        var slideName = thisIcon.find('img').attr('for');
+        
+        thisIcon.on('click', function(){
+            var thisSlide = $('.slider-content .slide[name="' + slideName + '"]');
+            console.log(thisSlide);
+            clearAllSlides();
+            if( !( thisSlide.hasClass('active') ) && !( thisIcon.hasClass('active') ) ){
+                thisSlide.addClass('active');
+                thisIcon.addClass('active');
+            }
+        });
+    });
+}
 
-GLOBAL.testFunction = function(){
-    console.log("Maybe this will work");
-    return;
-};
-
-/** 
-var testVar = 0;
-
-function testFunction(){
-    console.log( "Then how come this doesn't work?\ntestVar = " + testVar );
-    testVar++;
+function clearAllSlides(){
+    var raceIcons = $('ul.slider-buttons li').removeClass('active');
+    var raceSlides = $('.slider-content .slide').removeClass('active');
 }
 
 $( document ).ready( function(){
-    console.log("This should work, right?");
-    testFunction();
+    console.log("Lucioware Active");
+    changeRaceSlide();
 });
-**/
