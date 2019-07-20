@@ -1,0 +1,294 @@
+@import '_global.scss';
+
+/***** PAGE VARIABLES *****/
+
+$banner-height: 110px;
+$menu-height: 50px;
+$video-width: 500px;
+$video-height: 300px;
+
+
+/***** GLOBAL OVERRIDE *****/
+
+body {
+    padding-top: 110px;
+    
+    hidden.hash-anchor:target {
+        display: block;
+        position: relative;
+        top: -#{$banner-height};
+        visibility: hidden;
+    }
+}
+
+
+/***** STATIC BANNER *****/
+
+.eme-banner {
+    @include getfont(eme-banner);
+    color: white;
+    
+    display: block;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    
+    width: 100%;
+    height: $banner-height;
+    background-color: $eme-bar-bg;
+    box-shadow: 0px 0px 7px #000000;
+    
+    a {
+        display: block;
+        position: absolute;
+        color: inherit;
+        
+        &.home {
+            top: 5px;
+            left: 15px;
+            height: 50px;
+            width: 62px;
+            background: transparent url("/images/enmasse_logo.png") top left / contain no-repeat;
+        }
+        
+        &.account {
+            top: 25px;
+            right: 15px;
+        }
+
+    }
+        
+    .eme-menu {
+        @include getfont(eme-menu);
+        color: black;
+        
+        position: relative;
+        top: calc( #{$banner-height} - #{$menu-height} );
+        height: $menu-height;
+        background-image: linear-gradient($eme-menu-grad1, $eme-menu-grad2);
+        
+        a {
+            position: relative;
+            height: $menu-height;
+            
+            img{
+                height: calc( #{$menu-height} - 10px );
+            }
+            
+            &.tera-logo {
+                float: left;
+                margin-right: 10px;
+                padding: 5px;
+            }
+            
+            &.menu-item {
+                float: left;
+                padding: 18px 10px;
+                margin: 0px 10px;
+                
+                &:hover, &:focus, &:active {
+                    @include textshadow(#000000);
+                    color: $eme-btn-bg;
+                    text-decoration: none;
+                }
+            }
+            
+            &.btn-play {
+                @include getfont(eme-btn-play);
+                
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                height: auto;
+                padding: 5px 30px;
+                border-radius: 9px;
+                margin-top: 9px;
+                
+                background-color: $eme-btn-bg;
+                border: 2px solid $eme-btn-border;
+                
+                transition: all .1s ease-in-out;
+                
+                &:hover, &:focus {
+                    text-decoration: none;
+                    background-color: $eme-btn-border;
+                    box-shadow: 1px 1px 4px #000000;
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+    
+}
+
+.content {
+    
+    .container {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    
+    .responsive-video-wrapper {
+        position: relative;
+        width: 100%;
+        min-width: 400px;
+        max-width: $video-width;
+        height: 0;
+        max-height: $video-height;
+        margin: 15px auto 30px auto;
+        padding-bottom: calc( #{$video-height} - 100px + 10% );
+        border: 3px solid $eme-vid-border;
+        border-radius: 3px;
+    }
+    
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .section[name=gameplay] {
+        background: $eme-tac-bg url("/images/background-tac.jpg") center center / cover no-repeat;
+        text-align: center;
+        
+        h2 {
+            @include getfont(eme-tac-head);
+            @include textgradient(vertical, $eme-head-grad1, $eme-head-grad2);
+            margin-bottom: 10px;
+        }
+        
+        p {
+            @include getfont(eme-tac-body);
+            @include textshadow(#000000);
+            color: white;
+            margin: 0px auto 10px auto;
+            max-width: $video-width;
+        }
+        
+    }
+    
+    .section[name=races] {
+        background: $eme-tac-bg url("/images/background_races.jpg") center center / cover no-repeat;
+        text-align: center;
+        
+        h1 {
+            @include getfont(eme-races-head);
+            display: block;
+            position: relative;
+            text-align: left;
+            margin-bottom: 100px;
+            
+            span.shadow {
+                @include textshadow(#000000);
+            }
+            
+            span.title {
+                @include textgradient(vertical, $eme-head-grad1, $eme-head-grad2);
+                position: absolute;
+                left: 0px;
+            }
+        }
+        
+        .wide-band {
+            background-image: linear-gradient(to right, $eme-races-grad1, $eme-races-grad2, $eme-races-grad1);
+            height: 200px;
+            margin-bottom: 150px;
+            
+            .slide {
+                position: relative;
+                padding-left: 50%;
+                display: none;
+                
+                &.active{
+                    display: block;
+                }
+                
+                img {
+                    position: absolute;
+                    height: 500px;
+                    right: 50%;
+                    top: calc( 50% - 250px );
+                }
+                
+                h2 {
+                    @include getfont(eme-races-sub);
+                    margin-bottom: 15px;
+                }
+                
+                p {
+                    @include getfont(eme-races-body);
+                }
+            }
+        }
+        
+        ul.slider-buttons {
+            
+            li {
+                @include getfont(eme-races-icon);
+                display: inline-block;
+                margin: 3px 10px;
+                cursor: pointer;
+                
+                .icon-wrapper {
+                    display: block;
+                    padding: 3px;
+                    background-color: $eme-races-btnbg;
+                    border: 3px solid $eme-races-btn;
+                    border-radius: 5px;
+                    box-shadow: 5px 5px 5px #000000;
+                    margin-bottom: 15px;
+                    
+                    transition: all .2s ease-in-out; 
+                    transform: skewX(-20deg);
+                    
+                    img {
+                        transform: skewX(20deg); // offset
+                    }
+                }
+                
+                span {
+                    display: block;
+                    margin-left: -30px;
+                }
+                
+                &:hover, &:focus, &.active {
+
+                    .icon-wrapper {
+                            transform: scale(1.15) skewX(-20deg);
+                            background-color: $eme-races-btn;
+                    }
+                    
+                    span {
+                        @include textshadow(#000000);
+                        color: $eme-races-btn;
+                    }
+                }
+            }
+        }
+    }    
+}
+
+footer {
+    display: block;
+    position: static;
+    bottom: $banner-height;
+    height: $banner-height;
+    width: 100%;
+    padding: 25px;
+    background-color: $eme-bar-bg;
+    text-align: center;
+    
+    p {
+        @include getfont(eme-footer);
+        color: #FFFFFF;
+    }
+}
+
+
+/***** RESPONSIVE *****/
+@media (max-width: 900px) {
+
+    // DO I NEED THIS YET!? Maybe...
+}

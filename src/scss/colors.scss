@@ -1,0 +1,21 @@
+/***** COLORS *****/
+
+$eme-bar-bg :       #0c1c33; // EME Bar
+$eme-bar-border :   #183561;
+$eme-btn-bg :       #92e3f8; // Main Button 
+$eme-btn-border :   #00c7fa;
+$eme-vid-border :   $eme-btn-border;
+
+$eme-menu-grad1 :   #ffffff; // Main Menu (GRAD start)
+$eme-menu-grad2 :   #ececec; // Main Menu (GRAD end)
+
+$eme-head-grad1 :   #f0e4d2; // Headline (GRAD start), Races Bar (GRAD start)
+$eme-head-grad2 :   #fab83c; // Headline (GRAD end), Races Bar (GRAD end), Races Button
+
+$eme-races-bg :     #909090; // Races Section
+$eme-races-grad1 :  $eme-head-grad1;
+$eme-races-grad2 :  $eme-head-grad2;
+$eme-races-btnbg :  $eme-head-grad1;
+$eme-races-btn :    $eme-head-grad2;
+
+$eme-tac-bg :       #566aa2; // True Action Combat

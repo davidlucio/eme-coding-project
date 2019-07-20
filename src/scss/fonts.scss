@@ -1,0 +1,130 @@
+/***** FONTS *****/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+@mixin getfont($section){
+    
+    // EME Bar -  Roboto Bold 14px (Google Font)
+    @if $section == 'eme-banner'{
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    
+    // Main Menu - Montserrat Bold 16px (Google Font)
+    @if $section == 'eme-menu' {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+    
+    // Play Button - Montserrat Bold 18px
+    @if $section == 'eme-btn-play' {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1;
+        color: white;
+        text-transform: uppercase;
+    }
+    
+    // True Action Combat - Montserrat Bold 42px
+    @if $section == 'eme-tac-head' {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 42px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+    
+    // True Action Combat Description - Roboto 18px
+    @if $section == 'eme-tac-body' {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1;
+    }
+    
+    // Races Section Heading - Montserrat Bold 72px
+    @if $section == 'eme-races-head' {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 72px;
+        font-weight: 600;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+    
+    // Race Name - Montserrat Bold 48px
+    @if $section == 'eme-races-sub' {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 48px;
+        font-weight: 600;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+    
+    // Race Description - Roboto 21px
+    @if $section == 'eme-races-body' {
+        font-family: 'Roboto', sans-serif;
+        font-size: 21px;
+        font-weight: 400;
+        line-height: 1;
+    }
+    
+    // Race Icon Label - Montserrat Bold 16px
+    @if $section == 'eme-races-icon' {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.1;
+    }
+    
+    // Copyright Notice - Roboto 16px
+    @if $section == 'eme-footer' {
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.1;
+    }
+    
+    // Link Handling
+    a {
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+@mixin textshadow($shadowcolor){
+
+    text-shadow: 
+        -1px -1px 1px $shadowcolor,
+        1px -1px 1px $shadowcolor,
+        -1px 1px 1px $shadowcolor,
+        1px 1px 1px $shadowcolor;
+    
+}
+
+@mixin textgradient($dir, $color1, $color2){
+    
+    @if $dir == 'vertical' {
+        background: linear-gradient(to bottom, $color1 0%, $color2 100%);
+    }
+    
+    @if $dir == 'horizontal' {
+        background: linear-gradient(to right, $color1 0%, $color2 100%);
+    }
+    
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

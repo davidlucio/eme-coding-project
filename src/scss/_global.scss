@@ -1,0 +1,44 @@
+/***** FONTS *****/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import 'fonts.scss';
+@import 'colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+.section,  {
+    display: block;
+    position: relative;
+    width: 100%;
+    background-image: linear-gradient($eme-menu-grad1, $eme-menu-grad2);
+}
+
+.container {
+    position: relative;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    // background-color: rgba(0,0,100,.1);
+}
+
+.wide-band {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
