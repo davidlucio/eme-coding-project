@@ -22,6 +22,7 @@ import './images/races/elin.png';
 import './images/races/high-elf.png';
 import './images/races/human.png';
 import './images/races/popori.png';
+import './images/races/puppy.png';
 
 import './images/icons/aman-icon.png';
 import './images/icons/baraka-icon.png';
@@ -59,6 +60,26 @@ function clearAllSlides(){
     var raceSlides = $('.slider-content .slide').removeClass('active');
 }
 
+function activateCheat(){
+    console.log( 'Cheat code activated!' );
+    clearAllSlides();
+    $(".slide[name='cheat-code']").addClass('active');
+    location.hash = "#races";
+}
+
+$( document ).ready( function(){
+    
+    changeRaceSlide();
+    
+    $( window ).konami({
+  		code : [38,38,40,40,37,39,37,39,66,65], // up up down down left right left right
+		cheat: function() {
+            activateCheat();
+		}
+	});
+});
+
+/***** This particular function is from a public external source, since the package included wasn't working properly. Besides, it's just for fun anyway! *****/
 (function ( $ ) {
 	"use strict";
     
@@ -95,20 +116,3 @@ function clearAllSlides(){
 	};
     
 })( jQuery );
-
-function activateCheat(){
-    alert( 'Cheat code activated!' );
-    // DO SOMETHING HERE!
-}
-
-$( document ).ready( function(){
-    
-    changeRaceSlide();
-    
-    $( window ).konami({
-  		code : [38,38,40,40,37,39,37,39,66,65], // up up down down left right left right
-		cheat: function() {
-            activateCheat();
-		}
-	});
-});
